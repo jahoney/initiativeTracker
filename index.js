@@ -41,11 +41,11 @@ restService.post("/initiative", function(req, res) {
   else speech = "Hi " + speech + ". who else is there?";
   */
   console.log(req.body);
-  /*
+  
   if (req.body.metadata.intentName == "startInitiative") {
     speech = "Intent of startInitiative passed to server.";
   }
-  */
+  
   return res.json({
     speech: speech,
     displayText: speech,
