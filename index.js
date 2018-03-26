@@ -40,11 +40,12 @@ restService.post("/initiative", function(req, res) {
   else if(speech == "no") speech = "It's okay, i don't like my little pony either...wink wink. What is your actual name?";
   else speech = "Hi " + speech + ". who else is there?";
   */
-  console.log(req.body.metadata);
+  console.log(req.body);
+  /*
   if (req.body.metadata.intentName == "startInitiative") {
     speech = "Intent of startInitiative passed to server.";
   }
-  
+  */
   return res.json({
     speech: speech,
     displayText: speech,
