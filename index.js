@@ -40,7 +40,7 @@ restService.post("/initiative", function(req, res) {
   else if(speech == "no") speech = "It's okay, i don't like my little pony either...wink wink. What is your actual name?";
   else speech = "Hi " + speech + ". who else is there?";
   */
-  if(action.toUpperCase() == "START") {
+  if(action.toUpperCase() == "START BATTLE") {
     speech = "We are starting.";
   }
   
