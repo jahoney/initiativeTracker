@@ -26,7 +26,7 @@ restService.use(bodyParser.json());
 restService.post("/initiative", function(req, res) {
 
   
-console.log("in POST");
+  console.log("in POST");
   
   const app = new DialogflowApp({request: req, response: res});
 
