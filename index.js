@@ -28,14 +28,21 @@ restService.post("/initiative", function(req, res) {
   
   console.log("in POST");
   console.log(req.body);
-  console.log(req.body.result.parameters.startInitiative);
   
-  console.log(req.body.result.parameters.notThere);
   var doWork = null;
 
+  console.log("First Check");
     if( req.body.result.parameters.startInitiative != null) {
       console.log("Complete");
     doWork = req.body.result.parameters.startInitiative;
+    }
+  
+  console.log(doWork);
+  
+  console.log("Second Check");
+  if( req.body.result.parameters.addPlayerCharacter != null) {
+      console.log("Complete");
+    doWork = req.body.result.parameters.addPlayerCharacter;
     }
 
   
