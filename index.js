@@ -32,13 +32,12 @@ restService.post("/initiative", function(req, res) {
   
   console.log(req.body.result.parameters.notThere);
   var doWork = null;
-  if(req.body.result.parameters.length > 0) {
-    console.log("First Hurdle");
+
     if( req.body.result.parameters.startInitiative != null) {
       console.log("Complete");
     doWork = req.body.result.parameters.startInitiative;
     }
-  }
+
   
   console.log(doWork);
   //console.log(doWork.id);
