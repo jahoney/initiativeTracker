@@ -33,7 +33,7 @@ restService.post("/initiative", function(req, res) {
    // Create functions to handle requests here
   console.log("app created");
   console.log(app);
-  var intent = app.getIntent();
+  var intent = req.getIntent();
   console.log(intent);
   var startInitiative = req.body.result &&
     req.body.result.parameters &&
