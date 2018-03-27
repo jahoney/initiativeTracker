@@ -47,4 +47,4 @@ var character = {
 // 	}
 };
 
-exports.character = characterList;
+exports.char = character;
