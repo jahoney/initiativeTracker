@@ -36,6 +36,7 @@ restService.post("/initiative", function(req, res) {
     req.body.result.parameters &&
     req.body.result.parameters.echoText ? req.body.result.parameters.echoText
       : "Sorry there was an issue. Can you say that again?";
+  speech = req.body.intentName;
   /*
   if( speech.toUpperCase() == "MIKE" || speech.toUpperCase() == "MIKE ADAMS" || speech.toUpperCase() == "MICHAEL" || speech.toUpperCase() == "MICHAEL ADAMS" || speech.toUpperCase() == "MERRICK" || speech.toUpperCase() == "ETIENNE" ) {
      speech = "You said your name is Ass. Is this correct?";
