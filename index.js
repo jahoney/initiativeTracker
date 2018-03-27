@@ -50,9 +50,11 @@ restService.post("/initiative", function(req, res) {
   */
   if(startInitiative !== "") {
     speech = "We are starting. Start Initiative was passed.";
+    startInitiative = "";
   }
   if(addPlayerCharacter !== "") {
     speech = "Add a player to the initiative list.";
+    addPlayerCharacter = "";
   }
   
   return res.json({
