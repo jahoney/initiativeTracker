@@ -29,9 +29,8 @@ restService.post("/initiative", function(req, res) {
   console.log("in POST");
   
   var app = new DialogflowApp({request: req, response: res});
-  app = JSON.parse(app);
   //const assistant = new DialogflowApp({request: req, response: res});
-  const intent = app.getIntent();
+  const intent = app.intent.TEXT;
   console.log("GetIntent: " + intent );
    // Create functions to handle requests here
   console.log("app created");
