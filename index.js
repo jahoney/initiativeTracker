@@ -24,6 +24,15 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/initiative", function(req, res) {
+
+  const DialogflowApp = require('actions-on-google').DialogflowApp;
+
+  
+  const app = new DialogflowApp({request: req, response: res});
+
+   // Create functions to handle requests here
+  var intent = app.getIntent();
+  console.log(intent);
   var startInitiative = req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.startInitiative ? req.body.result.parameters.startInitiative
@@ -33,7 +42,7 @@ restService.post("/initiative", function(req, res) {
     req.body.result.parameters.addPlayerCharacter ? req.body.result.parameters.addPlayerCharacter
       : "";
   var intentName = req.body.result.intentName;
-  console.log("Intent Name is " + intentName;
+ 
   var action = req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.initiativeAction ? req.body.result.parameters.initiativeAction
