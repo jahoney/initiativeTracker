@@ -50,7 +50,7 @@ restService.post("/initiative", function(req, res) {
     speech: speech,
     displayText: speech,
     action: action,
-    source: req.body.toString()
+    source: req.body.result.name
   });
 });
 
