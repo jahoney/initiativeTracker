@@ -43,6 +43,9 @@ restService.post("/initiative", function(req, res) {
   if(req.body.result.parameters.startInitiative !== "") {
     speech = "We are starting. Start Initiative was passed.";
   }
+  if(req.body.result.parameter.addPlayerCharacter !== "") {
+    speech = "Add a player to the initiative list.";
+  }
   
   return res.json({
     speech: speech,
