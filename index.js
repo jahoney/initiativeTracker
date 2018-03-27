@@ -30,6 +30,9 @@ restService.post("/initiative", function(req, res) {
   
   var app = new DialogflowApp({request: req, response: res});
   //const assistant = new DialogflowApp({request: req, response: res});
+  if(app.body.params.startInitiative) {
+     console.log("HERE");
+     }
   const intent = app.intent.TEXT;
   console.log("GetIntent: " + intent );
    // Create functions to handle requests here
@@ -37,10 +40,10 @@ restService.post("/initiative", function(req, res) {
   console.log(app);
   //var intent = req.getIntent();
   console.log(intent);
-  var startInitiative = req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.startInitiative ? req.body.result.parameters.startInitiative
-      : "";
+//   var startInitiative = req.body.result &&
+//     req.body.result.parameters &&
+//     req.body.result.parameters.startInitiative ? req.body.result.parameters.startInitiative
+//       : "";
   var addPlayerCharacter = req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.addPlayerCharacter ? req.body.result.parameters.addPlayerCharacter
