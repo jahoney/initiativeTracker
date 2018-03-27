@@ -28,7 +28,7 @@ restService.post("/initiative", function(req, res) {
   
   console.log("in POST");
   console.log(req.body);
-  var doWork = "";
+  var doWork = null;
   if(req.body.result.parameters.count > 0 && req.body.result.parameters.startInitiative != null) {
     doWork = req.body.result.parameters.startInitiative;
   }
