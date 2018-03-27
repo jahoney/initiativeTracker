@@ -28,9 +28,9 @@ restService.post("/initiative", function(req, res) {
   
   console.log("in POST");
   console.log(req.body);
-  var doWork = req.body.result.parameters[0];
+  var doWork = req.body.result.parameters.toString();
   console.log(doWork);
-  console.log(doWork.id);
+  //console.log(doWork.id);
   console.log(req.body.result.parameters);
   if(doWork == "startInitiative") {
     console.log("STARTING INIT!!!");
