@@ -50,8 +50,7 @@ restService.post("/initiative", function(req, res) {
     speech: speech,
     displayText: speech,
     action: action,
-    source: "webhook-echo-sample",
-    text: req.body
+    source: req.body.toString()
   });
 });
 
