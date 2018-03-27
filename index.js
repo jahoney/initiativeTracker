@@ -1,6 +1,6 @@
 "use strict";
 
-
+const DialogflowApp = require('actions-on-google').DialogflowApp;
 const express = require("express");
 const bodyParser = require("body-parser");
 var fs = require('fs');
@@ -25,8 +25,8 @@ restService.use(bodyParser.json());
 
 restService.post("/initiative", function(req, res) {
 
-  const DialogflowApp = require('actions-on-google').DialogflowApp;
-
+  
+console.log("in POST");
   
   const app = new DialogflowApp({request: req, response: res});
 
@@ -41,7 +41,7 @@ restService.post("/initiative", function(req, res) {
     req.body.result.parameters &&
     req.body.result.parameters.addPlayerCharacter ? req.body.result.parameters.addPlayerCharacter
       : "";
-  var intentName = req.body.result.intentName;
+  //var intentName = req.body.result.intentName;
  
   var action = req.body.result &&
     req.body.result.parameters &&
@@ -69,7 +69,8 @@ restService.post("/initiative", function(req, res) {
     addPlayerCharacter = "";
   }
   */
- speech = "Passed " + intentName;
+ //speech = "Passed " + intentName;
+  console.log(speech);
   return res.json({
     speech: speech,
     displayText: speech,
