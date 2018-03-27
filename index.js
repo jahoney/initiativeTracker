@@ -28,10 +28,10 @@ restService.post("/initiative", function(req, res) {
   
   console.log("in POST");
   
-  const app = new DialogflowApp({request: req, response: res});
+  //const app = new DialogflowApp({request: req, response: res});
 
    // Create functions to handle requests here
-  var intent = app.getIntent();
+  //var intent = app.getIntent();
   console.log(intent);
   var startInitiative = req.body.result &&
     req.body.result.parameters &&
