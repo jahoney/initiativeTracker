@@ -36,7 +36,9 @@ restService.post("/initiative", function(req, res) {
     req.body.result.parameters &&
     req.body.result.parameters.echoText ? req.body.result.parameters.echoText
       : "Sorry there was an issue. Can you say that again?";
-  speech = req.body.intentName.toString();
+  if(req.body.intentName.toString().toUpperCase() == "STARTINITIATIVE") {
+    speech = "We are starting initiative.";
+  }
   /*
   if( speech.toUpperCase() == "MIKE" || speech.toUpperCase() == "MIKE ADAMS" || speech.toUpperCase() == "MICHAEL" || speech.toUpperCase() == "MICHAEL ADAMS" || speech.toUpperCase() == "MERRICK" || speech.toUpperCase() == "ETIENNE" ) {
      speech = "You said your name is Ass. Is this correct?";
@@ -54,7 +56,7 @@ restService.post("/initiative", function(req, res) {
     speech: speech,
     displayText: speech,
     action: action,
-    source: req.body.result.name
+    source: "john gaddy"
   });
 });
 
