@@ -15,22 +15,23 @@ function finished(err) {
 
 const restService = express();
 
-restService.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
-);
+// restService.use(
+//   bodyParser.urlencoded({
+//     extended: true
+//   })
+// );
 
-restService.use(bodyParser.json());
+// restService.use(bodyParser.json());
 
 restService.post("/initiative", function(req, res) {
 
   
   console.log("in POST");
   
-  const app = new DialogflowApp({request: req, response: res});
-  const assistant = new DialogflowApp({request: req, response: res});
-  const intent = assistant.getIntent();
+  var app = new DialogflowApp({request: req, response: res});
+  app = JSON.parse(app);
+  //const assistant = new DialogflowApp({request: req, response: res});
+  const intent = app.getIntent();
   console.log("GetIntent: " + intent );
    // Create functions to handle requests here
   console.log("app created");
