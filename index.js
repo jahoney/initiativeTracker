@@ -3,6 +3,7 @@
 const DialogflowApp = require('actions-on-google').DialogflowApp;
 const express = require("express");
 const bodyParser = require("body-parser");
+var character = require("character").character;
 var fs = require('fs');
 var data = fs.readFileSync('initiative.json');
 
@@ -38,6 +39,8 @@ switch(true)
       break;
     case (req.body.result.parameters.addPlayerCharacter != null) : 
       console.log("Testing addPlayerCharacter");
+      var test = new character();
+      console.log(test);
       break;
   }
   
@@ -59,10 +62,10 @@ switch(true)
   
 //   console.log(doWork);
   //console.log(doWork.id);
-  console.log(req.body.result.parameters);
-  if(doWork != null) {
-    console.log(doWork);
-  }
+ // console.log(req.body.result.parameters);
+  //if(doWork != null) {
+  //  console.log(doWork);
+ // }
   //var app = new DialogflowApp({request: req, response: res});
   //const assistant = new DialogflowApp({request: req, response: res});
 //   if(req.body.params.startInitiative) {
@@ -79,21 +82,21 @@ switch(true)
 //     req.body.result.parameters &&
 //     req.body.result.parameters.startInitiative ? req.body.result.parameters.startInitiative
 //       : "";
-  var addPlayerCharacter = req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.addPlayerCharacter ? req.body.result.parameters.addPlayerCharacter
-      : "";
-  //var intentName = req.body.result.intentName;
+//   var addPlayerCharacter = req.body.result &&
+//     req.body.result.parameters &&
+//     req.body.result.parameters.addPlayerCharacter ? req.body.result.parameters.addPlayerCharacter
+//       : "";
+//   //var intentName = req.body.result.intentName;
  
-  var action = req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.initiativeAction ? req.body.result.parameters.initiativeAction
-      : "No action defined";
-  var speech =
-    req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.echoText ? req.body.result.parameters.echoText
-      : "Sorry there was an issue. Can you say that again?";
+//   var action = req.body.result &&
+//     req.body.result.parameters &&
+//     req.body.result.parameters.initiativeAction ? req.body.result.parameters.initiativeAction
+//       : "No action defined";
+//   var speech =
+//     req.body.result &&
+//     req.body.result.parameters &&
+//     req.body.result.parameters.echoText ? req.body.result.parameters.echoText
+//       : "Sorry there was an issue. Can you say that again?";
   /*
   if( speech.toUpperCase() == "MIKE" || speech.toUpperCase() == "MIKE ADAMS" || speech.toUpperCase() == "MICHAEL" || speech.toUpperCase() == "MICHAEL ADAMS" || speech.toUpperCase() == "MERRICK" || speech.toUpperCase() == "ETIENNE" ) {
      speech = "You said your name is Ass. Is this correct?";
