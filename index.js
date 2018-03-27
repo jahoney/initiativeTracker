@@ -40,10 +40,10 @@ restService.post("/initiative", function(req, res) {
   else if(speech == "no") speech = "It's okay, i don't like my little pony either...wink wink. What is your actual name?";
   else speech = "Hi " + speech + ". who else is there?";
   */
-  if(req.body.result.parameters.startInitiative !== "") {
+  if(req.body.result.parameters.startInitiative) {
     speech = "We are starting. Start Initiative was passed.";
   }
-  if(req.body.result.parameter.addPlayerCharacter !== "") {
+  if(req.body.result.parameter.addPlayerCharacter) {
     speech = "Add a player to the initiative list.";
   }
   
