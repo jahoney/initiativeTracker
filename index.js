@@ -24,9 +24,6 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/initiative", function(req, res) {
- 
-	res.send(req.body.toString());
-  
   var action = req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.initiativeAction ? req.body.result.parameters.initiativeAction
@@ -36,9 +33,6 @@ restService.post("/initiative", function(req, res) {
     req.body.result.parameters &&
     req.body.result.parameters.echoText ? req.body.result.parameters.echoText
       : "Sorry there was an issue. Can you say that again?";
-  if(req.body.intentName.toString().toUpperCase() == "STARTINITIATIVE") {
-    speech = "We are starting initiative.";
-  }
   /*
   if( speech.toUpperCase() == "MIKE" || speech.toUpperCase() == "MIKE ADAMS" || speech.toUpperCase() == "MICHAEL" || speech.toUpperCase() == "MICHAEL ADAMS" || speech.toUpperCase() == "MERRICK" || speech.toUpperCase() == "ETIENNE" ) {
      speech = "You said your name is Ass. Is this correct?";
@@ -46,17 +40,15 @@ restService.post("/initiative", function(req, res) {
   else if(speech == "no") speech = "It's okay, i don't like my little pony either...wink wink. What is your actual name?";
   else speech = "Hi " + speech + ". who else is there?";
   */
-  //var out = req.body.result.name;
-  /*
-  if (req.body.metadata.intentName == "startInitiative") {
-    speech = "Intent of startInitiative passed to server.";
+  if(action.toUpperCase() == "START") {
+    speech = "We are starting.";
   }
-  */
+  
   return res.json({
     speech: speech,
     displayText: speech,
     action: action,
-    source: "john gaddy"
+    source: "webhook-echo-sample"
   });
 });
 
