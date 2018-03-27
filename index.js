@@ -28,7 +28,13 @@ restService.post("/initiative", function(req, res) {
   
   console.log("in POST");
   console.log(req.body);
-  console.log(req.body.result.parameters.startInitiative);
+  var doWork = req.body.result.parameters[0];
+  console.log(doWork);
+  console.log(doWork.id);
+  console.log(req.body.result.parameters);
+  if(doWork == "startInitiative") {
+    console.log("STARTING INIT!!!");
+  }
   //var app = new DialogflowApp({request: req, response: res});
   //const assistant = new DialogflowApp({request: req, response: res});
 //   if(req.body.params.startInitiative) {
