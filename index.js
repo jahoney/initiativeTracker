@@ -32,7 +32,7 @@ restService.post("/initiative", function(req, res) {
     req.body.result.parameters &&
     req.body.result.parameters.addPlayerCharacter ? req.body.result.parameters.addPlayerCharacter
       : "";
-  var intentName = req.body.intentName;
+  var intentName = req.body.result.intentName;
   console.log("Intent Name is " + intentName.toString());
   var action = req.body.result &&
     req.body.result.parameters &&
