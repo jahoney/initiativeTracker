@@ -15,31 +15,31 @@ function finished(err) {
 
 const restService = express();
 
-// restService.use(
-//   bodyParser.urlencoded({
-//     extended: true
-//   })
-// );
+restService.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
 
-// restService.use(bodyParser.json());
+restService.use(bodyParser.json());
 
 restService.post("/initiative", function(req, res) {
 
   
   console.log("in POST");
   
-  var app = new DialogflowApp({request: req, response: res});
+  //var app = new DialogflowApp({request: req, response: res});
   //const assistant = new DialogflowApp({request: req, response: res});
-  if(app.body.params.startInitiative) {
+  if(req.body.params.startInitiative) {
      console.log("HERE");
      }
-  const intent = app.intent.TEXT;
-  console.log("GetIntent: " + intent );
+  //const intent = app.intent.TEXT;
+  //console.log("GetIntent: " + intent );
    // Create functions to handle requests here
-  console.log("app created");
-  console.log(app);
+  //console.log("app created");
+  //console.log(app);
   //var intent = req.getIntent();
-  console.log(intent);
+  //console.log(intent);
 //   var startInitiative = req.body.result &&
 //     req.body.result.parameters &&
 //     req.body.result.parameters.startInitiative ? req.body.result.parameters.startInitiative
