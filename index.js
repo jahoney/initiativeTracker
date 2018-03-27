@@ -3,7 +3,7 @@
 const DialogflowApp = require('actions-on-google').DialogflowApp;
 const express = require("express");
 const bodyParser = require("body-parser");
-var character = require("character").character;
+var character = require("/character.js").character;
 var fs = require('fs');
 var data = fs.readFileSync('initiative.json');
 
