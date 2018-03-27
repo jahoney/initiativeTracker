@@ -28,6 +28,9 @@ restService.post("/initiative", function(req, res) {
   
   console.log("in POST");
   console.log(req.body);
+  console.log(req.body.result.parameters.startInitiative);
+  
+  console.log(req.body.result.parameters.notThere);
   var doWork = null;
   if(req.body.result.parameters.length > 0) {
     console.log("First Hurdle");
