@@ -1,4 +1,4 @@
-"use strict";
+//"use strict";
 
 const DialogflowApp = require('actions-on-google').DialogflowApp;
 const express = require("express");
@@ -31,6 +31,14 @@ restService.post("/initiative", function(req, res) {
   
   var doWork = null;
 
+with (req.body.result.parameters)
+  {
+    if (startInitiative != null)
+      {console.log(startInitiative)}
+    if (addPlayerCharacter != null)
+      {console.log(addPlayerCharacter)}
+  }
+  
   console.log("First Check");
     if( req.body.result.parameters.startInitiative != null) {
       console.log("Complete");
@@ -50,7 +58,7 @@ restService.post("/initiative", function(req, res) {
   //console.log(doWork.id);
   console.log(req.body.result.parameters);
   if(doWork != null) {
-    console.log("STARTING INIT!!!");
+    console.log(doWork);
   }
   //var app = new DialogflowApp({request: req, response: res});
   //const assistant = new DialogflowApp({request: req, response: res});
