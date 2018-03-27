@@ -1,4 +1,4 @@
-//"use strict";
+"use strict";
 
 const DialogflowApp = require('actions-on-google').DialogflowApp;
 const express = require("express");
@@ -29,32 +29,35 @@ restService.post("/initiative", function(req, res) {
   console.log("in POST");
   console.log(req.body);
   
-  var doWork = null;
+  //var doWork = null;
 
-with (req.body.result.parameters)
+switch(true)
   {
-    if (startInitiative != null)
-      {console.log(startInitiative)}
-    if (addPlayerCharacter != null)
-      {console.log(addPlayerCharacter)}
+    case (req.body.result.parameters.startInitiative != null) : 
+      console.log("Testing startInitiative");
+      break;
+    case (req.body.result.parameters.addPlayerCharacter != null) : 
+      console.log("Testing addPlayerCharacter");
+      break;
   }
   
-  console.log("First Check");
-    if( req.body.result.parameters.startInitiative != null) {
-      console.log("Complete");
-    doWork = req.body.result.parameters.startInitiative;
-    }
   
-  console.log(doWork);
+//   console.log("First Check");
+//     if( req.body.result.parameters.startInitiative != null) {
+//       console.log("Complete");
+//     doWork = req.body.result.parameters.startInitiative;
+//     }
   
-  console.log("Second Check");
-  if( req.body.result.parameters.addPlayerCharacter != null) {
-      console.log("Complete");
-    doWork = req.body.result.parameters.addPlayerCharacter;
-    }
+//   console.log(doWork);
+  
+//   console.log("Second Check");
+//   if( req.body.result.parameters.addPlayerCharacter != null) {
+//       console.log("Complete");
+//     doWork = req.body.result.parameters.addPlayerCharacter;
+//     }
 
   
-  console.log(doWork);
+//   console.log(doWork);
   //console.log(doWork.id);
   console.log(req.body.result.parameters);
   if(doWork != null) {
