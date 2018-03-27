@@ -9,6 +9,7 @@
   "author": "John Gaddy",
   "dependencies": {
     "body-parser": "^1.15.0",
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "actions-on-google": "^1.1.0"
   }
 }
