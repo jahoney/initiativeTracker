@@ -24,6 +24,14 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/initiative", function(req, res) {
+  var startInitiative = req.body.result &&
+    req.body.result.parameters &&
+    req.body.result.parameters.startInitiative ? req.body.result.parameters.startInitiative
+      : "";
+  var addPlayerCharacter = req.body.result &&
+    req.body.result.parameters &&
+    req.body.result.parameters.addPlayerCharacter ? req.body.result.parameters.addPlayerCharacter
+      : "";
   var action = req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.initiativeAction ? req.body.result.parameters.initiativeAction
@@ -40,10 +48,10 @@ restService.post("/initiative", function(req, res) {
   else if(speech == "no") speech = "It's okay, i don't like my little pony either...wink wink. What is your actual name?";
   else speech = "Hi " + speech + ". who else is there?";
   */
-  if(req.body.result.parameters.startInitiative) {
+  if(startInitiative !== "") {
     speech = "We are starting. Start Initiative was passed.";
   }
-  if(req.body.result.parameter.addPlayerCharacter) {
+  if(addPlayerCharacter !== "") {
     speech = "Add a player to the initiative list.";
   }
   
