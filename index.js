@@ -24,6 +24,9 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/initiative", function(req, res) {
+ 
+	res.send(req.body.toString());
+  
   var action = req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.initiativeAction ? req.body.result.parameters.initiativeAction
