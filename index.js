@@ -137,7 +137,6 @@ switch(true)
   return res.json({
     speech: speech,
     displayText: speech,
-    action: action,
     source: "webhook-echo-sample"
   });
 });
