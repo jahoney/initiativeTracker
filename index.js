@@ -32,6 +32,7 @@ class character {
   }
 }
 var characterList = [];
+var initiativeList = [];
 var inInitiative = false;
 const restService = express();
 
@@ -51,15 +52,17 @@ restService.post("/initiative", function(req, res) {
   var speech = "";
   //var doWork = null;
 
-switch(true)
-  {
+  switch(true) {
     case (req.body.result.parameters.startInitiative != null) : 
-      if(!inInitiative) {
+      if(!inInitiative && initiativeList.length > 0) {
         console.log("Testing startInitiative");
         inInitiative = true;
         speech = "Get ready to battle.";
       }
-      else speech = "You are already in a battle. To exit, say exit battle. To go to the next turn, say next turn. To hear the current player, say who's turn is it?";
+      else if(initiativeList.length === 0) {
+        speech = "You must add characters before starting initiative.";
+      }
+      else speech = "You are already in a battle. To exit, say exit battle. To go to the next turn, say next turn. To hear the current player, say whose turn is it?";
       break;
     case (req.body.result.parameters.addPlayerCharacter != null) : 
       if (!inInitiative) {
@@ -79,18 +82,21 @@ switch(true)
         console.log("Testing exitInitiative");
         inInitiative = false;
         speech = "Exiting Initiative";
+        initiativeList = [];
       }
       else speech = "You are not currently in battle. To start a battle say start battle.";
       break;
     case (req.body.result.parameters.currentInitiative != null) :
       if(inInitiative) {
-        console.log("Looking for the current initiative.")
+        console.log("Looking for the current initiative.");
+
       }
       else {
         console.log("Not in intitiative.");
         speech = "You are not currently in initiative. To start a battle, say start battle.";
       }
-  }
+      break;
+    }
   
   
 //   console.log("First Check");
