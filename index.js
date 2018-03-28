@@ -63,6 +63,10 @@ switch(true)
       console.log(characterList);
       speech = test.getName() + " added to character list";
       break;
+     case (req.body.result.parameters.exitInitiative != null) : 
+      console.log("Testing exitInitiative");
+      speech = "Exiting Initiative";
+      break;
   }
   
   
