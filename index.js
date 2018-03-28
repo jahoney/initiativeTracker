@@ -3,7 +3,7 @@
 const DialogflowApp = require('actions-on-google').DialogflowApp;
 const express = require("express");
 const bodyParser = require("body-parser");
-var character = require("./character.js").char;
+//var character = require("./character.js").char;
 var fs = require('fs');
 var data = fs.readFileSync('initiative.json');
 
@@ -13,6 +13,20 @@ fs.writeFile('initiative.json', data, finished);
 function finished(err) {
   console.log('done');
 }
+
+class character {
+  constructor(name, initiative, initiativeModifier) {
+    this.initiativeModifier = initiativeModifier;
+    this.initiative = Math.ceil(Math.random()*20) + this.initiativeModifier;
+  }
+  getInitiative() {
+    return this.initiative;
+  }
+  setInitiative(newInitiative) {
+    this.initiative = newInitiative;
+  }
+}
+var characterList = [];
 
 const restService = express();
 
@@ -39,7 +53,8 @@ switch(true)
       break;
     case (req.body.result.parameters.addPlayerCharacter != null) : 
       console.log("Testing addPlayerCharacter");
-      var test = new character();
+      var test = new character(req.body.result.parameters.playerName, 0, req.body.result.parameters.initiativeModifier);
+      characterList.push(test);
       console.log(test);
       break;
   }
