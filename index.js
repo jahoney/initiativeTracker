@@ -62,11 +62,17 @@ switch(true)
       else speech = "You are already in a battle. To exit, say exit battle. To go to the next turn, say next turn. To hear the current player, say who's turn is it?";
       break;
     case (req.body.result.parameters.addPlayerCharacter != null) : 
-      console.log("Testing addPlayerCharacter");
-      var test = new character(req.body.result.parameters.playerName, 0, req.body.result.parameters.initiativeModifier, true);
-      characterList.push(test);
-      console.log(characterList);
-      speech = test.getName() + " added to character list";
+      if (!inInitiative) {
+        console.log("Testing addPlayerCharacter");
+        var test = new character(req.body.result.parameters.playerName, 0, req.body.result.parameters.initiativeModifier, true);
+        characterList.push(test);
+        console.log(characterList);
+        speech = test.getName() + " added to character list";
+      }
+      else {
+        console.log("Already in battle, cannot add character.");
+        speech = "You are already in a battle. To add a character, exit the battle and then add player.";
+      }
       break;
      case (req.body.result.parameters.exitInitiative != null) : 
       if(inInitiative) {
