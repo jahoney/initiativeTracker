@@ -54,7 +54,7 @@ restService.post("/initiative", function(req, res) {
 
   switch(true) {
     case (req.body.result.parameters.startInitiative != null) : 
-      if(!inInitiative && initiativeList.length > 0) {
+      if(!inInitiative && characterList.length > 0) {
         console.log("Testing startInitiative");
         inInitiative = true;
         speech = "Get ready to battle.";
