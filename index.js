@@ -16,6 +16,7 @@ function finished(err) {
 
 class character {
   constructor(name, initiative, initiativeModifier) {
+    this.name = name;
     this.initiativeModifier = initiativeModifier;
     this.initiative = Math.ceil(Math.random()*20) + this.initiativeModifier;
   }
@@ -43,19 +44,21 @@ restService.post("/initiative", function(req, res) {
   
   console.log("in POST");
   console.log(req.body);
-  
+  var speech = "";
   //var doWork = null;
 
 switch(true)
   {
     case (req.body.result.parameters.startInitiative != null) : 
       console.log("Testing startInitiative");
+      speech = "Get ready to battle.";
       break;
     case (req.body.result.parameters.addPlayerCharacter != null) : 
       console.log("Testing addPlayerCharacter");
       var test = new character(req.body.result.parameters.playerName, 0, req.body.result.parameters.initiativeModifier);
       characterList.push(test);
-      console.log(test);
+      console.log(characterList);
+      speech = "New character added.";
       break;
   }
   
