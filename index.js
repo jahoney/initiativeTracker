@@ -82,6 +82,14 @@ switch(true)
       }
       else speech = "You are not currently in battle. To start a battle say start battle.";
       break;
+    case (req.body.result.parameters.currentInitiative != null) :
+      if(inInitiative) {
+        console.log("Looking for the current initiative.")
+      }
+      else {
+        console.log("Not in intitiative.");
+        speech = "You are not currently in initiative. To start a battle, say start battle.";
+      }
   }
   
   
