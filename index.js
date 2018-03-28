@@ -26,6 +26,9 @@ class character {
   setInitiative(newInitiative) {
     this.initiative = newInitiative;
   }
+  getName() {
+    return this.name;
+  }
 }
 var characterList = [];
 
@@ -58,7 +61,7 @@ switch(true)
       var test = new character(req.body.result.parameters.playerName, 0, req.body.result.parameters.initiativeModifier);
       characterList.push(test);
       console.log(characterList);
-      speech = "New character added.";
+      speech = test.getName() + " added to character list";
       break;
   }
   
