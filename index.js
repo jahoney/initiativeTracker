@@ -15,10 +15,11 @@ function finished(err) {
 }
 
 class character {
-  constructor(name, initiative, initiativeModifier) {
+  constructor(name, initiative, initiativeModifier, isPlayerCharacter) {
     this.name = name;
     this.initiativeModifier = initiativeModifier;
     this.initiative = Math.ceil(Math.random()*20) + this.initiativeModifier;
+    this.isPlayerCharacter = isPlayerCharacter;
   }
   getInitiative() {
     return this.initiative;
@@ -31,7 +32,7 @@ class character {
   }
 }
 var characterList = [];
-
+var inInitiative = false;
 const restService = express();
 
 restService.use(
@@ -53,19 +54,27 @@ restService.post("/initiative", function(req, res) {
 switch(true)
   {
     case (req.body.result.parameters.startInitiative != null) : 
-      console.log("Testing startInitiative");
-      speech = "Get ready to battle.";
+      if(!inInitiative) {
+        console.log("Testing startInitiative");
+        inInitiative = true;
+        speech = "Get ready to battle.";
+      }
+      else speech = "You are already in a battle. To exit, say exit battle. To go to the next turn, say next turn. To hear the current player, say who's turn is it?";
       break;
     case (req.body.result.parameters.addPlayerCharacter != null) : 
       console.log("Testing addPlayerCharacter");
-      var test = new character(req.body.result.parameters.playerName, 0, req.body.result.parameters.initiativeModifier);
+      var test = new character(req.body.result.parameters.playerName, 0, req.body.result.parameters.initiativeModifier, true);
       characterList.push(test);
       console.log(characterList);
       speech = test.getName() + " added to character list";
       break;
      case (req.body.result.parameters.exitInitiative != null) : 
-      console.log("Testing exitInitiative");
-      speech = "Exiting Initiative";
+      if(inInitiative) {
+        console.log("Testing exitInitiative");
+        inInitiative = false;
+        speech = "Exiting Initiative";
+      }
+      else speech = "You are not currently in battle. To start a battle say start battle.";
       break;
   }
   
