@@ -192,7 +192,7 @@ function startInitiative() {
   for(var i = 0; i < characterList.length; i++) {
      characterList[i].setInitiative((Math.ceil(Math.random()*20) + characterList[i].getInitiativeModifier));
   }   
-  fs.writeFile('initiative.json', characterList, finished);
+  fs.writeFileSync("./initiative.json",JSON.stringify(characterList),finished);
   console.log(characterList);
 }
 
