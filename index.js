@@ -30,6 +30,9 @@ class character {
   getName() {
     return this.name;
   }
+  getInitiativeModifier() {
+    return this.initiativeModifier;
+  }
 }
 var characterList = [];
 var initiativeList = [];
@@ -57,6 +60,7 @@ restService.post("/initiative", function(req, res) {
       if(!inInitiative && characterList.length > 0) {
         console.log("Testing startInitiative");
         inInitiative = true;
+        startInitiative();
         speech = "Get ready to battle.";
       }
       else if(initiativeList.length === 0) {
@@ -181,3 +185,13 @@ restService.post("/initiative", function(req, res) {
 restService.listen(process.env.PORT || 8000, function() {
   console.log("Server up and listening");
 });
+
+function startInitiative() {
+  var initiativeToBeat = 0;
+  //set initiative
+  for(var i = 0; i < characterList.length; i++) {
+     characterList[i].setInitiative(Math.ceil(Math.random()*20) + characterList[i].getInitiativeModifier);
+  }   
+  console.log(characterList);
+}
+
