@@ -25,7 +25,7 @@ class character {
     return this.initiative;
   }
   setInitiative(newInitiative) {
-    this.initiative = newInitiative;
+    this.initiative = parseInt(newInitiative);
   }
   getName() {
     return this.name;
