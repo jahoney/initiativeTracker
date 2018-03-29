@@ -71,7 +71,7 @@ restService.post("/initiative", function(req, res) {
     case (req.body.result.parameters.addPlayerCharacter != null) : 
       if (!inInitiative) {
         console.log("Testing addPlayerCharacter");
-        var test = new character(req.body.result.parameters.playerName, 0, req.body.result.parameters.initiativeModifier, true);
+        var test = new character(req.body.result.parameters.playerName, 0, parseInt(req.body.result.parameters.initiativeModifier), true);
         characterList.push(test);
         console.log(characterList);
         speech = test.getName() + " added to character list";
@@ -190,7 +190,7 @@ function startInitiative() {
   var initiativeToBeat = 0;
   //set initiative
   for(var i = 0; i < characterList.length; i++) {
-     characterList[i].setInitiative(Math.ceil(Math.random()*20) + characterList[i].getInitiativeModifier);
+     characterList[i].setInitiative((Math.ceil(Math.random()*20) + characterList[i].getInitiativeModifier));
   }   
   console.log(characterList);
 }
